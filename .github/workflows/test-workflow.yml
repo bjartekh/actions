@@ -7,6 +7,16 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      run_forrest:
+        description: 'Run job4'
+        required: false
+        default: 'false'
+      input1:
+        description: 'First input'
+        required: false
+        default: ''        
 
 jobs:
   job1:
@@ -37,3 +47,16 @@ jobs:
 
       - name: Run script
         run: ./.github/workflows/test.sh
+
+  webhook_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_forrest == 'true' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run script
+        run: |
+          echo "run_forrest: ${{ github.event.inputs.run_forrest }}"
+          echo "Input1: ${{ github.event.inputs.input1 }}"
+          
