@@ -53,9 +53,6 @@ jobs:
     uses: bjartekh/global-workflows/.github/workflows/global-workflow.yml@main
     with:
       test-path: .github/this-is-a-test.yml
-      
-    
-      
 
 
   webhook_job:
