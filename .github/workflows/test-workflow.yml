@@ -48,19 +48,21 @@ jobs:
       - name: Run script
         run: ./.github/workflows/test.sh
 
+  # Runs reusable workflow from global-workflows with test-path as input. Will also provide output, see job4      
   job-call-global-workflow:
     needs: job1
     uses: bjartekh/global-workflows/.github/workflows/global-workflow.yml@main
     with:
       test-path: .github/this-is-a-test.yml
 
+  # Will echo the output received from reusable workflow "job-call-global-workflow"
   job4:
     runs-on: ubuntu-latest
     needs: job-call-global-workflow
     steps:
       - run: echo ${{ needs.job-call-global-workflow.outputs.firstword }}
 
-      
+
   webhook_job:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_forrest == 'true' }}
