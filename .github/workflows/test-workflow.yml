@@ -85,7 +85,7 @@ jobs:
           name: dist-file          
       - shell: bash
         run: |
-          ls -lrt dist-file
+          ls -lrt
           value=`cat dist-file`
           echo $value
 
