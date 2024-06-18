@@ -68,7 +68,7 @@ jobs:
       - name: Archive artefacts 
         uses: actions/upload-artifact@v4  
         with:
-          name: dist-without-markdown
+          name: dist-file
           path: |
             dist
             !dist/**/*.md
