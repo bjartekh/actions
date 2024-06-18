@@ -74,6 +74,23 @@ jobs:
             !dist/**/*.md
           retention-days: 5
 
+  # Downloads artefact after it was uploaded in previous step.          
+  job-download-artefact:
+    runs-on: ubuntu-latest
+    needs: job-upload-artefact
+    steps:
+      - name: Download a single artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-file          
+      - shell: bash
+        run: |
+          ls -lrt dist-file
+          value=`cat dist-file`
+          echo $value
+
+
+
   webhook_job:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_forrest == 'true' }}
