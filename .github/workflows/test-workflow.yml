@@ -54,7 +54,6 @@ jobs:
     with:
       test-path: .github/this-is-a-test.yml
 
-
   webhook_job:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_forrest == 'true' }}
