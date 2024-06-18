@@ -48,6 +48,16 @@ jobs:
       - name: Run script
         run: ./.github/workflows/test.sh
 
+  job-call-global-workflow:
+    needs: job1
+    uses: bjartekh/global-workflows/.github/workflows/global-workflow.yml@main
+    with:
+      test-path: .github/this-is-a-test.yml
+      
+    
+      
+
+
   webhook_job:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_forrest == 'true' }}
