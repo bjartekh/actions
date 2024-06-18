@@ -60,6 +60,7 @@ jobs:
     steps:
       - run: echo ${{ needs.job-call-global-workflow.outputs.firstword }}
 
+      
   webhook_job:
     runs-on: ubuntu-latest
     if: ${{ github.event.inputs.run_forrest == 'true' }}
