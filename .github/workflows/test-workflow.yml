@@ -74,7 +74,8 @@ jobs:
             !dist/**/*.md
           retention-days: 5
 
-  # Downloads artefact after it was uploaded in previous step.          
+  # Downloads artefact after it was uploaded in previous step. 
+  # The file is downloaded and unzipped to original filename by Github          
   job-download-artefact:
     runs-on: ubuntu-latest
     needs: job-upload-artefact
@@ -86,7 +87,7 @@ jobs:
       - shell: bash
         run: |
           ls -lrt
-          value=`cat dist-file`
+          value=`cat artefact.bin`
           echo $value
 
 
